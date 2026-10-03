@@ -1,7 +1,7 @@
 import time
 from fastapi import FastAPI, Request, status
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse, Response
+from fastapi.responses import JSONResponse, Response, RedirectResponse
 from prometheus_client import Counter, Histogram, generate_latest, CONTENT_TYPE_LATEST
 from app.config import settings
 from app.database import engine, Base, init_mongo_indexes
@@ -31,6 +31,10 @@ app = FastAPI(
     redoc_url=f"{settings.API_PREFIX}/redoc",
     lifespan=lifespan
 )
+
+@app.get("/docs", include_in_schema=False)
+def redirect_to_docs():
+    return RedirectResponse(url=f"{settings.API_PREFIX}/docs")
 
 # CORS Middleware for Flutter Client
 app.add_middleware(
