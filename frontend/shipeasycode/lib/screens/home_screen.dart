@@ -123,7 +123,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 const SizedBox(width: 12),
                 Expanded(
-                  child: _statCard('Total Spend', 'Rs.${totalSpend.toStringAsFixed(0)}', const Color(0xFF7A3FC2), Icons.account_balance_wallet_outlined),
+                  child: _statCard('Product Cost', 'Rs.${totalSpend.toStringAsFixed(0)}', const Color(0xFF7A3FC2), Icons.account_balance_wallet_outlined),
                 ),
               ],
             ),
